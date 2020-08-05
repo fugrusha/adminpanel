@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create customer table" author="andrew">
+        <createTable tableName="customer">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(100)"/>
+            <column name="chat_id" type="varchar(30)"/>
+            <column name="name" type="varchar(50)"/>
+            <column name="surname" type="varchar(50)"/>
+            <column name="phone" type="varchar(30)"/>
+            <column name="city" type="varchar(50)"/>
+            <column name="address" type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create app_user table" author="andrew">
+        <createTable tableName="app_user">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(100)"/>
+            <column name="encoded_password" type="varchar(255)"/>
+            <column name="is_blocked" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
