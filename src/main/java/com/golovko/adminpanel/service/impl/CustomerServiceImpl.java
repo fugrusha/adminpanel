@@ -1,8 +1,8 @@
 package com.golovko.adminpanel.service.impl;
 
 import com.golovko.adminpanel.domain.Customer;
-import com.golovko.adminpanel.dto.CustomerPatchDTO;
-import com.golovko.adminpanel.dto.CustomerReadDTO;
+import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.customer.CustomerReadDTO;
 import com.golovko.adminpanel.repository.CustomerRepository;
 import com.golovko.adminpanel.service.CustomerService;
 import com.golovko.adminpanel.service.TranslationService;

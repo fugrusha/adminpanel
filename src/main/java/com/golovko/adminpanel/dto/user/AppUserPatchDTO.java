@@ -1,4 +1,4 @@
-package com.golovko.adminpanel.dto;
+package com.golovko.adminpanel.dto.user;
 
 import lombok.Data;
 

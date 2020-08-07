@@ -2,7 +2,7 @@ package com.golovko.adminpanel.service;
 
 import com.golovko.adminpanel.domain.AbstractEntity;
 import com.golovko.adminpanel.domain.Customer;
-import com.golovko.adminpanel.dto.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
 import com.golovko.adminpanel.repository.RepositoryHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.bitbucket.brunneng.ot.Configuration;

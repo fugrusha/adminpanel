@@ -1,7 +1,7 @@
 package com.golovko.adminpanel.controller;
 
-import com.golovko.adminpanel.dto.CustomerPatchDTO;
-import com.golovko.adminpanel.dto.CustomerReadDTO;
+import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.customer.CustomerReadDTO;
 import com.golovko.adminpanel.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

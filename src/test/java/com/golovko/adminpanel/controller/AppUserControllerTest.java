@@ -2,9 +2,9 @@ package com.golovko.adminpanel.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.golovko.adminpanel.dto.AppUserCreateDTO;
-import com.golovko.adminpanel.dto.AppUserPatchDTO;
-import com.golovko.adminpanel.dto.AppUserReadDTO;
+import com.golovko.adminpanel.dto.user.AppUserCreateDTO;
+import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
+import com.golovko.adminpanel.dto.user.AppUserReadDTO;
 import com.golovko.adminpanel.service.AppUserService;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;

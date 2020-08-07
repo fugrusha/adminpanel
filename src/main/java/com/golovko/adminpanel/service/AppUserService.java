@@ -1,8 +1,8 @@
 package com.golovko.adminpanel.service;
 
-import com.golovko.adminpanel.dto.AppUserCreateDTO;
-import com.golovko.adminpanel.dto.AppUserPatchDTO;
-import com.golovko.adminpanel.dto.AppUserReadDTO;
+import com.golovko.adminpanel.dto.user.AppUserCreateDTO;
+import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
+import com.golovko.adminpanel.dto.user.AppUserReadDTO;
 
 import java.util.List;
 import java.util.UUID;

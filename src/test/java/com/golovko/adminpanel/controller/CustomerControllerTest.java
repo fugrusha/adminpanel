@@ -2,8 +2,8 @@ package com.golovko.adminpanel.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.golovko.adminpanel.dto.CustomerPatchDTO;
-import com.golovko.adminpanel.dto.CustomerReadDTO;
+import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.customer.CustomerReadDTO;
 import com.golovko.adminpanel.service.CustomerService;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;

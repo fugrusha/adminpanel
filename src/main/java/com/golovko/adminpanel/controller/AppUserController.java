@@ -1,8 +1,8 @@
 package com.golovko.adminpanel.controller;
 
-import com.golovko.adminpanel.dto.AppUserCreateDTO;
-import com.golovko.adminpanel.dto.AppUserPatchDTO;
-import com.golovko.adminpanel.dto.AppUserReadDTO;
+import com.golovko.adminpanel.dto.user.AppUserCreateDTO;
+import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
+import com.golovko.adminpanel.dto.user.AppUserReadDTO;
 import com.golovko.adminpanel.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
