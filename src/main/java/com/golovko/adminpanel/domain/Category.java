@@ -12,12 +12,10 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class ProductCategory extends AbstractEntity {
+public class Category extends AbstractEntity {
 
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     private List<Product> products = new ArrayList<>();
-
-    private Integer order;
 }

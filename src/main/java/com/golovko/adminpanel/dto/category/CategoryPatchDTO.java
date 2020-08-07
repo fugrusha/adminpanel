@@ -6,6 +6,4 @@ import lombok.Data;
 public class CategoryPatchDTO {
 
     private String name;
-
-    private Integer order;
 }
