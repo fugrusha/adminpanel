@@ -66,8 +66,8 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="status" type="varchar(30)"/>
-            <column name="created_date" type="date"/>
-            <column name="total_sum" type="int(4)"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="total_sum" type="double"/>
             <column name="customer_id" type="uuid">
                 <constraints
                         foreignKeyName="fk_order_customer_id"
@@ -79,29 +79,29 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create order_item table" author="andrew">
-        <createTable tableName="order_item">
-            <column name="id" type="uuid">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="quantity" type="int(4)"/>
-            <column name="order_id" type="uuid">
-                <constraints
-                        foreignKeyName="fk_order_item_order_id"
-                        referencedTableName="order"
-                        referencedColumnNames="id"
-                        nullable="false"
-                />
-            </column>
-            <column name="customer_id" type="uuid">
-                <constraints
-                        foreignKeyName="fk_order_item_customer_id"
-                        referencedTableName="customer"
-                        referencedColumnNames="id"
-                        nullable="false"
-                />
-            </column>
-        </createTable>
-    </changeSet>
+<!--    <changeSet id="create order_item table" author="andrew">-->
+<!--        <createTable tableName="order_item">-->
+<!--            <column name="id" type="uuid">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="quantity" type="int(4)"/>-->
+<!--            <column name="order_id" type="uuid">-->
+<!--                <constraints-->
+<!--                        foreignKeyName="fk_order_item_order_id"-->
+<!--                        referencedTableName="order"-->
+<!--                        referencedColumnNames="id"-->
+<!--                        nullable="false"-->
+<!--                />-->
+<!--            </column>-->
+<!--            <column name="product_id" type="uuid">-->
+<!--                <constraints-->
+<!--                        foreignKeyName="fk_order_item_product_id"-->
+<!--                        referencedTableName="product"-->
+<!--                        referencedColumnNames="id"-->
+<!--                        nullable="false"-->
+<!--                />-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

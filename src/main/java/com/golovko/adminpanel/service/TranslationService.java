@@ -11,7 +11,9 @@ import org.bitbucket.brunneng.ot.exceptions.TranslationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -51,6 +53,10 @@ public class TranslationService {
             log.warn(e.getMessage());
             throw (RuntimeException) e.getCause();
         }
+    }
+
+    public <T> List<T> translateList(List<?> objects, Class<T> targetClass) {
+        return objects.stream().map(o -> translate(o, targetClass)).collect(Collectors.toList());
     }
 
     private void configureForAbstractEntity(Configuration c) {

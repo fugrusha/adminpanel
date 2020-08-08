@@ -24,4 +24,7 @@ public class Product extends AbstractEntity {
 
     @Column(unique = true)
     private Integer order;
+
+//    @ManyToOne
+//    private OrderItem orderItem;
 }
