@@ -19,7 +19,7 @@ public class Product extends AbstractEntity {
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(nullable = false)
     private Category category;
 
     @Column(unique = true)
