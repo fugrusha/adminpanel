@@ -12,7 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql(statements = {
-        "delete from app_user"},
+        "delete from app_user",
+        "delete from category"},
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class BaseTest {
 

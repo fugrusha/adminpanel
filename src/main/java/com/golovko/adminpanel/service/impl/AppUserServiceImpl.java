@@ -4,7 +4,7 @@ import com.golovko.adminpanel.domain.AppUser;
 import com.golovko.adminpanel.dto.user.AppUserCreateDTO;
 import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
 import com.golovko.adminpanel.dto.user.AppUserReadDTO;
-import com.golovko.adminpanel.exception.UserAlreadyExistsException;
+import com.golovko.adminpanel.exception.EntityAlreadyExistsException;
 import com.golovko.adminpanel.repository.AppUserRepository;
 import com.golovko.adminpanel.repository.RepositoryHelper;
 import com.golovko.adminpanel.service.AppUserService;
@@ -42,7 +42,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUserReadDTO createUser(AppUserCreateDTO createDTO) {
         if (appUserRepository.existsByUsername(createDTO.getUsername())) {
-            throw new UserAlreadyExistsException(createDTO.getUsername());
+            throw new EntityAlreadyExistsException(AppUser.class, createDTO.getUsername());
         }
 
         AppUser user = translationService.translate(createDTO, AppUser.class);

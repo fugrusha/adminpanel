@@ -57,10 +57,13 @@ public class AppUserServiceImplTest extends BaseTest {
         createDTO.setPassword("123435");
         createDTO.setPasswordConfirmation("123435");
 
-        AppUserReadDTO createdUser = appUserService.createUser(createDTO);
+        AppUserReadDTO readDTO = appUserService.createUser(createDTO);
 
+        Assert.assertEquals(createDTO.getUsername(), readDTO.getUsername());
+        Assert.assertTrue(readDTO.getIsBlocked());
+
+        AppUser createdUser = appUserRepository.findById(readDTO.getId()).get();
         Assert.assertEquals(createDTO.getUsername(), createdUser.getUsername());
-        Assert.assertTrue(createdUser.getIsBlocked());
     }
 
     @Test
@@ -72,8 +75,10 @@ public class AppUserServiceImplTest extends BaseTest {
         patchDTO.setUsername("new username");
 
         AppUserReadDTO actualResult = appUserService.patchUser(u1.getId(), patchDTO);
-
         Assertions.assertThat(patchDTO).isEqualToComparingFieldByField(actualResult);
+
+        AppUser updatedUser = appUserRepository.findById(u1.getId()).get();
+        Assertions.assertThat(patchDTO).isEqualToComparingFieldByField(updatedUser);
     }
 
     @Test
