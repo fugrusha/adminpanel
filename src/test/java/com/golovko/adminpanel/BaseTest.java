@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 @Sql(statements = {
 //        "delete from order",
-//        "delete from product",
+        "delete from product",
         "delete from app_user",
         "delete from category",
         "delete from customer"},

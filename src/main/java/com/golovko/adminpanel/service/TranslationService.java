@@ -1,11 +1,10 @@
 package com.golovko.adminpanel.service;
 
-import com.golovko.adminpanel.domain.AbstractEntity;
-import com.golovko.adminpanel.domain.AppUser;
-import com.golovko.adminpanel.domain.Category;
-import com.golovko.adminpanel.domain.Customer;
+import com.golovko.adminpanel.domain.*;
 import com.golovko.adminpanel.dto.category.CategoryPatchDTO;
 import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.product.ProductPatchDTO;
+import com.golovko.adminpanel.dto.product.ProductReadDTO;
 import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
 import com.golovko.adminpanel.repository.RepositoryHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +37,7 @@ public class TranslationService {
         configureForAbstractEntity(c);
         configureForCustomer(c);
         configureForCategory(c);
+        configureForProduct(c);
         configureForAppUser(c);
 
         return c;
@@ -77,6 +77,13 @@ public class TranslationService {
 
     private void configureForCategory(Configuration c) {
         c.beanOfClass(CategoryPatchDTO.class).translationTo(Category.class).mapOnlyNotNullProperties();
+    }
+
+    private void configureForProduct(Configuration c) {
+        Configuration.Translation t = c.beanOfClass(Product.class).translationTo(ProductReadDTO.class);
+        t.srcProperty("category.id").translatesTo("categoryId");
+
+        c.beanOfClass(ProductPatchDTO.class).translationTo(Product.class).mapOnlyNotNullProperties();
     }
 
     private void configureForAppUser(Configuration c) {

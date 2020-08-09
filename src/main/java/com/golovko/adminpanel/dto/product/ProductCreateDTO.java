@@ -2,8 +2,6 @@ package com.golovko.adminpanel.dto.product;
 
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 public class ProductCreateDTO {
 
@@ -15,7 +13,5 @@ public class ProductCreateDTO {
 
     private Double price;
 
-    private Integer order;
-
-    private UUID categoryId;
+    private Integer orderNumber;
 }

@@ -48,7 +48,7 @@
             <column name="description" type="varchar(2000)"/>
             <column name="photo_url" type="varchar(2000)"/>
             <column name="price" type="double"/>
-            <column name="order" type="int(4)"/>
+            <column name="order_number" type="int(4)"/>
             <column name="category_id" type="uuid">
                 <constraints
                         foreignKeyName="fk_category_id"

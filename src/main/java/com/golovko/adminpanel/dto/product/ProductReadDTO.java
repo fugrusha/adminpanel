@@ -17,7 +17,7 @@ public class ProductReadDTO {
 
     private Double price;
 
-    private Integer order;
+    private Integer orderNumber;
 
     private UUID categoryId;
 }

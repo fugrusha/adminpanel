@@ -60,19 +60,19 @@ public class ProductControllerTest {
     public void testGetProductByOrderNum() throws Exception {
         ProductReadDTO readDTO = createProductReadDTO();
 
-        Mockito.when(productService.getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrder()))
+        Mockito.when(productService.getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrderNumber()))
                 .thenReturn(readDTO);
 
         String resultJson = mockMvc
                 .perform(get("/api/v1/categories/{categoryId}/products/{order}",
-                        readDTO.getCategoryId(), readDTO.getOrder()))
+                        readDTO.getCategoryId(), readDTO.getOrderNumber()))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         ProductReadDTO actualResult = objectMapper.readValue(resultJson, ProductReadDTO.class);
         Assertions.assertThat(readDTO).isEqualToComparingFieldByField(actualResult);
 
-        Mockito.verify(productService).getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrder());
+        Mockito.verify(productService).getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrderNumber());
     }
 
     @Test
@@ -83,8 +83,7 @@ public class ProductControllerTest {
         createDTO.setName("name");
         createDTO.setDescription("description");
         createDTO.setPhotoUrl("url");
-        createDTO.setCategoryId(UUID.randomUUID());
-        createDTO.setOrder(2);
+        createDTO.setOrderNumber(2);
         createDTO.setPrice(55.1);
 
         Mockito.when(productService.createProduct(readDTO.getCategoryId(), createDTO)).thenReturn(readDTO);
@@ -107,11 +106,10 @@ public class ProductControllerTest {
         ProductReadDTO readDTO = createProductReadDTO();
 
         ProductPatchDTO patchDTO = new ProductPatchDTO();
-        patchDTO.setCategoryId(UUID.randomUUID());
         patchDTO.setDescription("new description");
         patchDTO.setName("new name");
         patchDTO.setPhotoUrl("new url");
-        patchDTO.setOrder(10);
+        patchDTO.setOrderNumber(10);
         patchDTO.setPrice(1000.0);
 
         Mockito.when(productService.patchProduct(readDTO.getCategoryId(), readDTO.getId(), patchDTO))
@@ -149,7 +147,7 @@ public class ProductControllerTest {
         dto.setDescription("description");
         dto.setPrice(55.10);
         dto.setPhotoUrl("url");
-        dto.setOrder(2);
+        dto.setOrderNumber(2);
         dto.setCategoryId(UUID.randomUUID());
         return dto;
     }

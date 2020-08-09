@@ -3,7 +3,10 @@ package com.golovko.adminpanel.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -18,12 +21,12 @@ public class Product extends AbstractEntity {
 
     private Double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Category category;
 
     @Column(unique = true)
-    private Integer order;
+    private Integer orderNumber;
 
 //    @ManyToOne
 //    private OrderItem orderItem;
