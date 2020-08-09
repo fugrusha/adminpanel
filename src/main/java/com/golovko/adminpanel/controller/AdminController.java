@@ -16,7 +16,7 @@ public class AdminController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/orders")
+    @GetMapping("/orderCarts")
     public List<OrderReadDTO> getAllOrders() {
         return orderService.getAllOrders();
     }

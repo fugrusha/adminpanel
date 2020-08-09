@@ -1,15 +1,11 @@
 package com.golovko.adminpanel.util;
 
-import com.golovko.adminpanel.domain.AppUser;
-import com.golovko.adminpanel.domain.Category;
-import com.golovko.adminpanel.domain.Customer;
-import com.golovko.adminpanel.domain.Product;
-import com.golovko.adminpanel.repository.AppUserRepository;
-import com.golovko.adminpanel.repository.CategoryRepository;
-import com.golovko.adminpanel.repository.CustomerRepository;
-import com.golovko.adminpanel.repository.ProductRepository;
+import com.golovko.adminpanel.domain.*;
+import com.golovko.adminpanel.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class TestObjectFactory {
@@ -25,6 +21,12 @@ public class TestObjectFactory {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     public AppUser createUser() {
         AppUser user = new AppUser();
@@ -61,5 +63,19 @@ public class TestObjectFactory {
         p.setName("product name");
         p.setDescription("some description");
         return productRepository.save(p);
+    }
+
+    public OrderCart createOrder(Customer customer) {
+        OrderCart orderCart = new OrderCart();
+        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
+        orderCart.setTotalSum(20.0);
+        orderCart.setStatus(OrderStatus.PROCESSED);
+        orderCart.setCustomer(customer);
+        return orderRepository.save(orderCart);
+    }
+
+    public OrderItem createOrderItem(OrderCart order, Product product, int quantity) {
+        OrderItem item = new OrderItem(order, product, quantity);
+        return orderItemRepository.save(item);
     }
 }

@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(OrderController.class)
-public class OrderControllerTest {
+public class OrderCartControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -51,7 +51,7 @@ public class OrderControllerTest {
         Mockito.when(orderService.getAllCustomerOrders(customerId)).thenReturn(expectedResult);
 
         String resultJson = mockMvc
-                .perform(get("/api/v1/customers/{customerId}/orders/", customerId))
+                .perform(get("/api/v1/customers/{customerId}/order-carts/", customerId))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -70,7 +70,7 @@ public class OrderControllerTest {
                 .thenReturn(orderReadDTO);
 
         String resultJson = mockMvc
-                .perform(get("/api/v1/customers/{customerId}/orders/{id}",
+                .perform(get("/api/v1/customers/{customerId}/order-carts/{id}",
                         customerReadDTO.getId(), orderReadDTO.getId()))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
@@ -93,7 +93,7 @@ public class OrderControllerTest {
                 .thenReturn(orderReadDTO);
 
         String resultJson = mockMvc
-                .perform(patch("/api/v1/customers/{customerId}/orders/{id}",
+                .perform(patch("/api/v1/customers/{customerId}/order-carts/{id}",
                         customerReadDTO.getId(), orderReadDTO.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(patchDTO)))
@@ -111,53 +111,11 @@ public class OrderControllerTest {
         UUID customerId = UUID.randomUUID();
         UUID orderId = UUID.randomUUID();
 
-        mockMvc.perform(delete("/api/v1/customers/{customerId}/orders/{id}",
+        mockMvc.perform(delete("/api/v1/customers/{customerId}/order-carts/{id}",
                 customerId, orderId))
                 .andExpect(status().isOk());
 
         Mockito.verify(orderService).deleteOrder(customerId, orderId);
-    }
-
-    @Test
-    public void testAddProductToOrder() throws Exception {
-        UUID productId = UUID.randomUUID();
-        CustomerReadDTO customerReadDTO = createCustomerReadDTO();
-        OrderReadExtendedDTO orderReadDTO = createOrderReadExtendedDTO(customerReadDTO);
-
-        Mockito.when(orderService.addProductToOrder(customerReadDTO.getId(), orderReadDTO.getId(), productId))
-                .thenReturn(orderReadDTO);
-
-        String resultJson =mockMvc
-                .perform(post("/api/v1/customers/{customerId}/orders/{id}/products/{productId}",
-                        customerReadDTO.getId(), orderReadDTO.getId(), productId))
-                .andExpect(status().isOk())
-                .andReturn().getResponse().getContentAsString();
-
-        OrderReadExtendedDTO actualResult = objectMapper.readValue(resultJson, OrderReadExtendedDTO.class);
-        Assertions.assertThat(orderReadDTO).isEqualToComparingFieldByField(actualResult);
-
-        Mockito.verify(orderService).addProductToOrder(customerReadDTO.getId(), orderReadDTO.getId(), productId);
-    }
-
-    @Test
-    public void testRemoveProductFromOrder() throws Exception {
-        UUID productId = UUID.randomUUID();
-        CustomerReadDTO customerReadDTO = createCustomerReadDTO();
-        OrderReadExtendedDTO orderReadDTO = createOrderReadExtendedDTO(customerReadDTO);
-
-        Mockito.when(orderService.removeProductFromOrder(customerReadDTO.getId(), orderReadDTO.getId(), productId))
-                .thenReturn(orderReadDTO);
-
-        String resultJson =mockMvc
-                .perform(delete("/api/v1/customers/{customerId}/orders/{id}/products/{productId}",
-                        customerReadDTO.getId(), orderReadDTO.getId(), productId))
-                .andExpect(status().isOk())
-                .andReturn().getResponse().getContentAsString();
-
-        OrderReadExtendedDTO actualResult = objectMapper.readValue(resultJson, OrderReadExtendedDTO.class);
-        Assertions.assertThat(orderReadDTO).isEqualToComparingFieldByField(actualResult);
-
-        Mockito.verify(orderService).removeProductFromOrder(customerReadDTO.getId(), orderReadDTO.getId(), productId);
     }
 
     private OrderReadExtendedDTO createOrderReadExtendedDTO(CustomerReadDTO customerDTO) {

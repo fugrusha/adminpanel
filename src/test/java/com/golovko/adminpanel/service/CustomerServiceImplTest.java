@@ -25,7 +25,7 @@ public class CustomerServiceImplTest extends BaseTest {
 
         CustomerReadDTO readDTO = customerService.getCustomer(c1.getId());
 
-        Assertions.assertThat(c1).isEqualToIgnoringGivenFields(readDTO, "orders");
+        Assertions.assertThat(c1).isEqualToIgnoringGivenFields(readDTO, "orderCarts");
     }
 
     @Test

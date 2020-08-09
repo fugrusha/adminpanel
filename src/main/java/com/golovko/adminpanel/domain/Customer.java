@@ -28,5 +28,5 @@ public class Customer extends AbstractEntity {
     private String address;
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders = new ArrayList<>();
+    private List<OrderCart> orderCarts = new ArrayList<>();
 }

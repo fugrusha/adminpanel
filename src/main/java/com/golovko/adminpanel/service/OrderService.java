@@ -17,9 +17,5 @@ public interface OrderService {
 
     void deleteOrder(UUID customerId, UUID id);
 
-    OrderReadExtendedDTO addProductToOrder(UUID customerId, UUID orderId, UUID productId);
-
-    OrderReadExtendedDTO removeProductFromOrder(UUID customerId, UUID orderId, UUID productId);
-
     List<OrderReadDTO> getAllOrders();
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/customers/{customerId}/orders")
+@RequestMapping("/api/v1/customers/{customerId}/order-carts")
 public class OrderController {
 
     @Autowired
@@ -45,23 +45,5 @@ public class OrderController {
             @PathVariable UUID id
     ) {
         orderService.deleteOrder(customerId, id);
-    }
-
-    @PostMapping("/{id}/products/{productId}")
-    public OrderReadExtendedDTO addProductToOrder(
-            @PathVariable UUID customerId,
-            @PathVariable UUID id,
-            @PathVariable UUID productId
-    ) {
-        return orderService.addProductToOrder(customerId, id, productId);
-    }
-
-    @DeleteMapping("/{id}/products/{productId}")
-    public OrderReadExtendedDTO removeProductFromOrder(
-            @PathVariable UUID customerId,
-            @PathVariable UUID id,
-            @PathVariable UUID productId
-    ) {
-        return orderService.removeProductFromOrder(customerId, id, productId);
     }
 }

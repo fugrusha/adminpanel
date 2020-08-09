@@ -46,7 +46,7 @@ public class AdminControllerTest {
         Mockito.when(orderService.getAllOrders()).thenReturn(expectedResult);
 
         String resultJson = mockMvc
-                .perform(get("/api/v1/orders"))
+                .perform(get("/api/v1/orderCarts"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 

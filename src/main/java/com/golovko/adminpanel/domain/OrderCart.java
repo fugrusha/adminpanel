@@ -6,11 +6,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Order extends AbstractEntity {
+public class OrderCart extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
@@ -24,6 +26,6 @@ public class Order extends AbstractEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createdDate;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private List<OrderItem> items = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "orderCart")
+    private List<OrderItem> items = new ArrayList<>();
 }
