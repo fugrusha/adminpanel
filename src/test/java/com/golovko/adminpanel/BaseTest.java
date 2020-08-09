@@ -12,10 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql(statements = {
+//        "delete from order",
+//        "delete from product",
         "delete from app_user",
-        "delete from category"},
+        "delete from category",
+        "delete from customer"},
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-public class BaseTest {
+public abstract class BaseTest {
 
     @Autowired
     protected TestObjectFactory testObjectFactory;

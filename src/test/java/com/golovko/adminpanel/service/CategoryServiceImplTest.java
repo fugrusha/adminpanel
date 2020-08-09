@@ -77,6 +77,21 @@ public class CategoryServiceImplTest extends BaseTest {
     }
 
     @Test
+    public void testPatchCategoryWithEmpty() {
+        Category c1 = testObjectFactory.createCategory();
+
+        CategoryPatchDTO patchDTO = new CategoryPatchDTO();
+
+        List<CategoryReadDTO> categories = categoryService.patchCategory(c1.getId(), patchDTO);
+
+        CategoryReadDTO readDTO = categories.get(0);
+        Assertions.assertThat(readDTO).hasNoNullFieldsOrProperties();
+
+        Category category = categoryRepository.findById(c1.getId()).get();
+        Assert.assertEquals(category.getName(), readDTO.getName());
+    }
+
+    @Test
     public void testDeleteCategory() {
         Category c1 = testObjectFactory.createCategory();
 

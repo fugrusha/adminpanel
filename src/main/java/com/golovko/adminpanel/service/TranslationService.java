@@ -1,8 +1,12 @@
 package com.golovko.adminpanel.service;
 
 import com.golovko.adminpanel.domain.AbstractEntity;
+import com.golovko.adminpanel.domain.AppUser;
+import com.golovko.adminpanel.domain.Category;
 import com.golovko.adminpanel.domain.Customer;
+import com.golovko.adminpanel.dto.category.CategoryPatchDTO;
 import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
+import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
 import com.golovko.adminpanel.repository.RepositoryHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.bitbucket.brunneng.ot.Configuration;
@@ -33,6 +37,8 @@ public class TranslationService {
 
         configureForAbstractEntity(c);
         configureForCustomer(c);
+        configureForCategory(c);
+        configureForAppUser(c);
 
         return c;
     }
@@ -69,4 +75,11 @@ public class TranslationService {
         c.beanOfClass(CustomerPatchDTO.class).translationTo(Customer.class).mapOnlyNotNullProperties();
     }
 
+    private void configureForCategory(Configuration c) {
+        c.beanOfClass(CategoryPatchDTO.class).translationTo(Category.class).mapOnlyNotNullProperties();
+    }
+
+    private void configureForAppUser(Configuration c) {
+        c.beanOfClass(AppUserPatchDTO.class).translationTo(AppUser.class).mapOnlyNotNullProperties();
+    }
 }

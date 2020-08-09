@@ -82,6 +82,19 @@ public class AppUserServiceImplTest extends BaseTest {
     }
 
     @Test
+    public void testPatchUserWithEmptyPatch() {
+        AppUser u1 = testObjectFactory.createUser();
+
+        AppUserPatchDTO patchDTO = new AppUserPatchDTO();
+
+        AppUserReadDTO actualResult = appUserService.patchUser(u1.getId(), patchDTO);
+        Assertions.assertThat(actualResult).hasNoNullFieldsOrProperties();
+
+        AppUser updatedUser = appUserRepository.findById(u1.getId()).get();
+        Assertions.assertThat(actualResult).isEqualToComparingFieldByField(updatedUser);
+    }
+
+    @Test
     public void testDeleteUser() {
         AppUser u1 = testObjectFactory.createUser();
 
