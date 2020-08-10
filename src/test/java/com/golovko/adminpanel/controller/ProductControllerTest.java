@@ -57,22 +57,22 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetProductByOrderNum() throws Exception {
+    public void testGetProduct() throws Exception {
         ProductReadDTO readDTO = createProductReadDTO();
 
-        Mockito.when(productService.getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrderNumber()))
+        Mockito.when(productService.getProduct(readDTO.getCategoryId(), readDTO.getId()))
                 .thenReturn(readDTO);
 
         String resultJson = mockMvc
-                .perform(get("/api/v1/categories/{categoryId}/products/{order}",
-                        readDTO.getCategoryId(), readDTO.getOrderNumber()))
+                .perform(get("/api/v1/categories/{categoryId}/products/{id}",
+                        readDTO.getCategoryId(), readDTO.getId()))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         ProductReadDTO actualResult = objectMapper.readValue(resultJson, ProductReadDTO.class);
         Assertions.assertThat(readDTO).isEqualToComparingFieldByField(actualResult);
 
-        Mockito.verify(productService).getProductByOrderNum(readDTO.getCategoryId(), readDTO.getOrderNumber());
+        Mockito.verify(productService).getProduct(readDTO.getCategoryId(), readDTO.getId());
     }
 
     @Test

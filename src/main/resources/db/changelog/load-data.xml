@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="load customers" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="customer" file="db/data/customers.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="username" type="string"/>
+            <column name="chat_id" type="string"/>
+            <column name="name" type="string"/>
+            <column name="surname" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="city" type="string"/>
+            <column name="address" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load categories" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="category" file="db/data/categories.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="name" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load products" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="product" file="db/data/products.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="name" type="string"/>
+            <column name="description" type="string"/>
+            <column name="photo_url" type="string"/>
+            <column name="price" type="numeric"/>
+            <column name="order_number" type="numeric"/>
+            <column name="category_id" type="uuid"/>
+        </loadUpdateData>
+    </changeSet>
+
+</databaseChangeLog>

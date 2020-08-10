@@ -16,4 +16,6 @@ public interface CategoryService {
     List<CategoryReadDTO> patchCategory(UUID id, CategoryPatchDTO patchDTO);
 
     void deleteCategory(UUID id);
+
+    CategoryReadDTO getCategory(UUID id);
 }

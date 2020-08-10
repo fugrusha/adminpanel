@@ -44,8 +44,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductReadDTO getProductByOrderNum(UUID categoryId, Integer orderNumber) {
-        Product product = getRequiredProductByOrderNumber(categoryId, orderNumber);
+    public ProductReadDTO getProduct(UUID categoryId, UUID id) {
+        Product product = getRequiredProduct(id, categoryId);
         return translationService.translate(product, ProductReadDTO.class);
     }
 

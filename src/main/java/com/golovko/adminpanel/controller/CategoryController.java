@@ -22,6 +22,11 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
+    @GetMapping("/{id}")
+    public CategoryReadDTO getCategory(@PathVariable UUID id) {
+        return categoryService.getCategory(id);
+    }
+
     @PostMapping
     public List<CategoryReadDTO> createCategory(@RequestBody CategoryCreateDTO createDTO) {
         return categoryService.createCategory(createDTO);

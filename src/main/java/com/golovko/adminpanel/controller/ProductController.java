@@ -17,12 +17,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/{order}")
+    @GetMapping("/{id}")
     public ProductReadDTO getProductByOrderNum(
             @PathVariable UUID categoryId,
-            @PathVariable Integer order
+            @PathVariable UUID id
     ) {
-        return productService.getProductByOrderNum(categoryId, order);
+        return productService.getProduct(categoryId, id);
     }
 
     @GetMapping

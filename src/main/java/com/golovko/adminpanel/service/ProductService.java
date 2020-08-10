@@ -11,7 +11,7 @@ public interface ProductService {
 
     ProductReadDTO createProduct(UUID categoryId, ProductCreateDTO createDTO);
 
-    ProductReadDTO getProductByOrderNum(UUID categoryId, Integer orderNumber);
+    ProductReadDTO getProduct(UUID categoryId, UUID id);
 
     ProductReadDTO patchProduct(UUID categoryId, UUID id, ProductPatchDTO patchDTO);
 
