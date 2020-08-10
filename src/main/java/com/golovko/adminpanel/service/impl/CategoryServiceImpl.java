@@ -34,6 +34,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public CategoryReadDTO getCategory(UUID id) {
+        // todo write test
+        Category category = repoHelper.getEntityById(Category.class, id);
+        return translationService.translate(category, CategoryReadDTO.class);
+    }
+
+    @Override
     public List<CategoryReadDTO> createCategory(CategoryCreateDTO createDTO) {
         if (categoryRepository.existsByName(createDTO.getName())) {
             throw new EntityAlreadyExistsException(Category.class, createDTO.getName());

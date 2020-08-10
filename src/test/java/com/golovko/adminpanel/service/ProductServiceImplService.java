@@ -63,14 +63,14 @@ public class ProductServiceImplService extends BaseTest {
     }
 
     @Test
-    public void testGetProductByOrderNum() {
+    public void testGetProduct() {
         Category category = testObjectFactory.createCategory();
 
         Product p1 = testObjectFactory.createProduct(category, 1);
         testObjectFactory.createProduct(category, 2);
         testObjectFactory.createProduct(category, 3);
 
-        ProductReadDTO readDTO = productService.getProductByOrderNum(category.getId(), p1.getOrderNumber());
+        ProductReadDTO readDTO = productService.getProduct(category.getId(), p1.getId());
 
         Assertions.assertThat(p1).isEqualToIgnoringGivenFields(readDTO, "category");
         Assert.assertEquals(category.getId(), readDTO.getCategoryId());
