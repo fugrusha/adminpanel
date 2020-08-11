@@ -36,4 +36,14 @@
         </loadUpdateData>
     </changeSet>
 
+    <changeSet id="load orders" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="order_cart" file="db/data/orders.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="status" type="string"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="total_sum" type="numeric"/>
+            <column name="customer_id" type="uuid"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>

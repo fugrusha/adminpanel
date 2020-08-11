@@ -14,6 +14,8 @@ import java.util.List;
 @Entity
 public class OrderCart extends AbstractEntity {
 
+    // todo add orderId field
+
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
     private Customer customer;
