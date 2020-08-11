@@ -46,4 +46,13 @@
         </loadUpdateData>
     </changeSet>
 
+    <changeSet id="load order_items" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="order_item" file="db/data/order-items.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="product_id" type="uuid"/>
+            <column name="order_cart_id" type="uuid"/>
+            <column name="quantity" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>
