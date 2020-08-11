@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Moment from "react-moment";
-import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Table, Container, Form, FormGroup, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
 class OrderEdit extends Component {
@@ -11,7 +10,7 @@ class OrderEdit extends Component {
     status: '',
     createdDate: '',
     customer: '',
-    items: ''
+    items: []
   };
 
   constructor(props) {
@@ -61,6 +60,17 @@ class OrderEdit extends Component {
     const title = <h2>{item.id ? 'Edit Order' : 'Add Order'}</h2>;
     let baseUrl = '/customers/' + this.props.match.params.customerId + "/order-carts/"
 
+
+    const itemList = item.items.map((el, idx) => {
+      return ( <tr key={el.id}>
+          <td>{idx + 1}</td>
+          <td>{el.product.name}</td>
+          <td>{el.product.price}</td>
+          <td>{el.quantity}</td>
+      </tr>
+      )
+    });
+
     return <div>
       <AppNavbar/>
       <Container>
@@ -68,21 +78,50 @@ class OrderEdit extends Component {
         <h4>Order # {item.id}</h4>
         <p>Created date: {item.createdDate}</p>
 
-        <p>Items:</p>
+        { 
+          <div>
+            <h4>Customer</h4>
+            <p><b>Name:</b> {item.customer.name} {item.customer.surname}   <b>Phone:</b> {item.customer.phone}</p>
+            <p><b>City:</b> {item.customer.city}  <b>Address:</b> {item.customer.address}</p>
+          </div>
+        }
 
-        <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label for="name">Status</Label>
-            <Input type="text" name="status" id="status" value={item.status || ''}
-                   onChange={this.handleChange} autoComplete="status"/>
-          </FormGroup>
+        <h4>Items:</h4>
+
+        <Table className="mt-4">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th width="50%">Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            {itemList}
+            </tbody>
+          </Table>
+
           <p>
-              Total sum: 
+            <h4>Total sum:</h4> 
             {new Intl.NumberFormat("ua-UA", {
                 style: "currency",
                 currency: "UAH"
             }).format(item.totalSum)}
           </p>
+
+        <Form onSubmit={this.handleSubmit}>
+        <FormGroup>
+          <Label for="status">Status</Label>
+          <div>
+            <select id="status" name="status" onChange={this.handleChange} value={this.state.item.status}>
+              <option value="CANCELED">CANCELED</option>
+              <option value="WAITING">WAITING</option>
+              <option value="PROCESSED">PROCESSED</option>
+              <option value="COMPLETED">COMPLETED</option>
+            </select>
+          </div>
+          </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
             <Button color="secondary" tag={Link} to={baseUrl}>Cancel</Button>

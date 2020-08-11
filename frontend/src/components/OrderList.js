@@ -62,7 +62,7 @@ class OrderList extends Component {
             <thead>
             <tr>
               <th width="10%">Date</th>
-              <th>status</th>
+              <th>Status</th>
               <th width="20%">Total Sum</th>
               <th width="10%">Actions</th>
             </tr>

@@ -71,22 +71,22 @@ class ProductEdit extends Component {
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Description</Label>
+            <Label for="description">Description</Label>
             <Input type="text" name="description" id="description" value={item.description || ''}
                    onChange={this.handleChange} autoComplete="description"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Telegram Photo ID</Label>
+            <Label for="photoUrl">Telegram Photo ID</Label>
             <Input type="text" name="photoUrl" id="photoUrl" value={item.photoUrl || ''}
                    onChange={this.handleChange} autoComplete="photoUrl"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Order Number</Label>
+            <Label for="orderNumber">Order Number</Label>
             <Input type="text" name="orderNumber" id="orderNumber" value={item.orderNumber || ''}
                    onChange={this.handleChange} autoComplete="orderNumber"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Price</Label>
+            <Label for="price">Price</Label>
             <Input type="text" name="price" id="price" value={item.price || ''}
                    onChange={this.handleChange} autoComplete="price"/>
           </FormGroup>

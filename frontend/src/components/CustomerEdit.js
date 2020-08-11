@@ -68,12 +68,12 @@ class CustomerEdit extends Component {
                    onChange={this.handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Surname</Label>
+            <Label for="surname">Surname</Label>
             <Input type="text" name="surname" id="surname" value={item.surname || ''}
                    onChange={this.handleChange} autoComplete="surname"/>
           </FormGroup>
           <FormGroup>
-            <Label for="name">Phone</Label>
+            <Label for="phone">Phone</Label>
             <Input type="text" name="phone" id="phone" value={item.phone || ''}
                    onChange={this.handleChange} autoComplete="phone"/>
           </FormGroup>
