@@ -62,7 +62,7 @@ class ProductList extends Component {
           <div className="float-right">
             <Button color="success" tag={Link} to={`/categories/${this.props.match.params.id}/products/new`}>Add new product</Button>
           </div>
-          <h3>List of products</h3>
+          <h3>Products</h3>
           <Table className="mt-4">
             <thead>
             <tr>

@@ -8,7 +8,6 @@ class CustomerList extends Component {
   constructor(props) {
     super(props);
     this.state = {customers: [], isLoading: true};
-    this.remove = this.remove.bind(this);
   }
 
   componentDidMount() {
@@ -17,19 +16,6 @@ class CustomerList extends Component {
     fetch('/customers')
       .then(response => response.json())
       .then(data => this.setState({customers: data, isLoading: false}));
-  }
-
-  async remove(id) {
-    await fetch(`/customers/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => {
-      let updatedGroups = [...this.state.customers].filter(i => i.id !== id);
-      this.setState({customers: updatedGroups});
-    });
   }
 
   render() {
@@ -50,8 +36,8 @@ class CustomerList extends Component {
         <td>{customer.chatId}</td>
         <td>
           <ButtonGroup>
+            <Button size="sm" color="success" tag={Link} to={"/customers/" + customer.id + "/order-carts"}>Open</Button>
             <Button size="sm" color="primary" tag={Link} to={"/customers/" + customer.id}>Edit</Button>
-            <Button size="sm" color="danger" onClick={() => this.remove(customer.id)}>Delete</Button>
           </ButtonGroup>
         </td>
       </tr>
@@ -61,10 +47,7 @@ class CustomerList extends Component {
       <div>
         <AppNavbar/>
         <Container fluid>
-          <div className="float-right">
-            <Button color="success" tag={Link} to="/groups/new">Add Group</Button>
-          </div>
-          <h3>List of customers</h3>
+          <h3>Customers</h3>
           <Table className="mt-4">
             <thead>
             <tr>

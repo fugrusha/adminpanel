@@ -8,6 +8,8 @@ import CategoryList from './components/CategoryList';
 import CategoryEdit from './components/CategoryEdit';
 import ProductList from './components/ProductList';
 import ProductEdit from './components/ProductEdit';
+import OrderList from './components/OrderList';
+import OrderEdit from './components/OrderEdit';
 
 class App extends Component {
   render() {
@@ -18,6 +20,9 @@ class App extends Component {
 
           <Route path='/customers' exact={true} component={CustomerList}/>
           <Route path='/customers/:id' exact={true} component={CustomerEdit}/>
+
+          <Route path='/customers/:id/order-carts' exact={true} component={OrderList}/>
+          <Route path='/customers/:customerId/order-carts/:id' exact={true} component={OrderEdit}/>
 
           <Route path='/categories' exact={true} component={CategoryList}/>
           <Route path='/categories/:id' exact={true} component={CategoryEdit}/>

@@ -59,7 +59,7 @@ class CategoryList extends Component {
           <div className="float-right">
             <Button color="success" tag={Link} to="/categories/new">Add new category</Button>
           </div>
-          <h3>List of Categories</h3>
+          <h3>Categories</h3>
           <Table className="mt-4">
             <thead>
             <tr>
