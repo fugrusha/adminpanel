@@ -25,6 +25,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="username" type="varchar(100)"/>
+            <column name="chat_id" type="varchar(20)"/>
             <column name="encoded_password" type="varchar(255)"/>
             <column name="is_blocked" type="boolean"/>
         </createTable>

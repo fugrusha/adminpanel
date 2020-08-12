@@ -14,6 +14,9 @@ public class AppUser extends AbstractEntity {
     @Column(unique = true)
     private String username;
 
+    @Column(unique = true)
+    private String chatId;
+
     private String encodedPassword;
 
     private Boolean isBlocked = true;

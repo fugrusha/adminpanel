@@ -55,4 +55,14 @@
         </loadUpdateData>
     </changeSet>
 
+    <changeSet id="load users" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="app_user" file="db/data/users.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="username" type="uuid"/>
+            <column name="chat_id" type="string"/>
+            <column name="is_blocked" type="boolean"/>
+            <column name="encoded_password" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>
