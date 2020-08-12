@@ -1,5 +1,6 @@
 package com.golovko.adminpanel.controller;
 
+import com.golovko.adminpanel.dto.order.OrderFilter;
 import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class AdminController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/orderCarts")
-    public List<OrderReadDTO> getAllOrders() {
-        return orderService.getAllOrders();
+    @GetMapping("/order-carts")
+    public List<OrderReadDTO> getAllOrders(OrderFilter filter) {
+        return orderService.getAllOrders(filter);
     }
 }

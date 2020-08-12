@@ -3,6 +3,7 @@ package com.golovko.adminpanel.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.golovko.adminpanel.domain.OrderStatus;
+import com.golovko.adminpanel.dto.order.OrderFilter;
 import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.service.OrderService;
 import org.junit.Assert;
@@ -43,17 +44,44 @@ public class AdminControllerTest {
 
         List<OrderReadDTO> expectedResult = List.of(o1, o2, o3);
 
-        Mockito.when(orderService.getAllOrders()).thenReturn(expectedResult);
+        OrderFilter filter = new OrderFilter();
+
+        Mockito.when(orderService.getAllOrders(filter)).thenReturn(expectedResult);
 
         String resultJson = mockMvc
-                .perform(get("/api/v1/orderCarts"))
+                .perform(get("/api/v1/order-carts"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         List<OrderReadDTO> actualResult = objectMapper.readValue(resultJson, new TypeReference<>() {});
         Assert.assertEquals(expectedResult, actualResult);
 
-        Mockito.verify(orderService).getAllOrders();
+        Mockito.verify(orderService).getAllOrders(filter);
+    }
+
+    @Test
+    public void testGetAllOrdersWithFilter() throws Exception {
+        OrderReadDTO o1 = createOrderReadDTO();
+        OrderReadDTO o2 = createOrderReadDTO();
+        OrderReadDTO o3 = createOrderReadDTO();
+
+        List<OrderReadDTO> expectedResult = List.of(o1, o2, o3);
+
+        OrderFilter filter = new OrderFilter();
+        filter.setStatus(OrderStatus.PROCESSED);
+
+        Mockito.when(orderService.getAllOrders(filter)).thenReturn(expectedResult);
+
+        String resultJson = mockMvc
+                .perform(get("/api/v1/order-carts")
+                .param("status", filter.getStatus().toString()))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        List<OrderReadDTO> actualResult = objectMapper.readValue(resultJson, new TypeReference<>() {});
+        Assert.assertEquals(expectedResult, actualResult);
+
+        Mockito.verify(orderService).getAllOrders(filter);
     }
 
     private OrderReadDTO createOrderReadDTO() {

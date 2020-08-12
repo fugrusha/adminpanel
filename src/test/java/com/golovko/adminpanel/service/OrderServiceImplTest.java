@@ -2,6 +2,7 @@ package com.golovko.adminpanel.service;
 
 import com.golovko.adminpanel.BaseTest;
 import com.golovko.adminpanel.domain.*;
+import com.golovko.adminpanel.dto.order.OrderFilter;
 import com.golovko.adminpanel.dto.order.OrderPatchDTO;
 import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.dto.order.OrderReadExtendedDTO;
@@ -106,7 +107,7 @@ public class OrderServiceImplTest extends BaseTest {
     }
 
     @Test
-    public void testGetAllOrders() {
+    public void testGetAllOrdersWithEmptyFilter() {
         Customer c1 = testObjectFactory.createCustomer();
         Customer c2 = testObjectFactory.createCustomer();
 
@@ -114,9 +115,26 @@ public class OrderServiceImplTest extends BaseTest {
         OrderCart o2 = testObjectFactory.createOrder(c1);
         OrderCart o3 = testObjectFactory.createOrder(c2);
 
-        List<OrderReadDTO> allOrders = orderService.getAllOrders();
+        List<OrderReadDTO> allOrders = orderService.getAllOrders(new OrderFilter());
 
         Assertions.assertThat(allOrders).extracting("id")
                 .containsExactlyInAnyOrder(o1.getId(), o2.getId(), o3.getId());
+    }
+
+    @Test
+    public void testGetAllOrdersWithFilter() {
+        Customer c1 = testObjectFactory.createCustomer();
+        Customer c2 = testObjectFactory.createCustomer();
+
+        OrderCart o1 = testObjectFactory.createOrder(c1, OrderStatus.COMPLETED);
+        testObjectFactory.createOrder(c2, OrderStatus.WAITING);
+        testObjectFactory.createOrder(c1, OrderStatus.CANCELED);
+
+        OrderFilter filter = new OrderFilter();
+        filter.setStatus(OrderStatus.COMPLETED);
+
+        List<OrderReadDTO> allOrders = orderService.getAllOrders(filter);
+
+        Assertions.assertThat(allOrders).extracting("id").contains(o1.getId());
     }
 }

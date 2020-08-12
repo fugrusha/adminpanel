@@ -1,6 +1,7 @@
 package com.golovko.adminpanel.repository;
 
 import com.golovko.adminpanel.domain.OrderCart;
+import com.golovko.adminpanel.domain.OrderStatus;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,6 @@ public interface OrderRepository extends CrudRepository<OrderCart, UUID> {
 
     @Query("from OrderCart")
     List<OrderCart> getAllOrders();
+
+    List<OrderCart> findByStatus(OrderStatus status);
 }

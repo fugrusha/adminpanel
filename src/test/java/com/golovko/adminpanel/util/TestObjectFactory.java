@@ -75,6 +75,15 @@ public class TestObjectFactory {
         return orderRepository.save(orderCart);
     }
 
+    public OrderCart createOrder(Customer customer, OrderStatus status) {
+        OrderCart orderCart = new OrderCart();
+        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
+        orderCart.setTotalSum(20.0);
+        orderCart.setStatus(status);
+        orderCart.setCustomer(customer);
+        return orderRepository.save(orderCart);
+    }
+
     public OrderItem createOrderItem(OrderCart order, Product product, int quantity) {
         OrderItem item = new OrderItem(order, product, quantity);
         return orderItemRepository.save(item);
