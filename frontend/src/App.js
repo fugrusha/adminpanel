@@ -12,6 +12,7 @@ import OrderList from './components/OrderList';
 import OrderEdit from './components/OrderEdit';
 import UserList from './components/UserList';
 import UserEdit from './components/UserEdit';
+import OrderFilterList from './components/OrderFilterList';
 
 class App extends Component {
   render() {
@@ -34,6 +35,8 @@ class App extends Component {
 
           <Route path='/categories/:id/products' exact={true} component={ProductList}/>
           <Route path='/categories/:categoryId/products/:id' exact={true} component={ProductEdit}/>
+
+          <Route path='/order-carts' exact={true} component={OrderFilterList}/>
         </Switch>
       </Router>
     )

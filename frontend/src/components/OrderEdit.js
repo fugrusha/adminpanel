@@ -60,7 +60,6 @@ class OrderEdit extends Component {
     const title = <h2>{item.id ? 'Edit Order' : 'Add Order'}</h2>;
     let baseUrl = '/customers/' + this.props.match.params.customerId + "/order-carts/"
 
-
     const itemList = item.items.map((el, idx) => {
       return ( <tr key={el.id}>
           <td>{idx + 1}</td>
@@ -77,7 +76,7 @@ class OrderEdit extends Component {
         {title}
         <h4>Order # {item.id}</h4>
         <p>Created date: {item.createdDate}</p>
-
+        
         { 
           <div>
             <h4>Customer</h4>
