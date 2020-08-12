@@ -10,6 +10,8 @@ import ProductList from './components/ProductList';
 import ProductEdit from './components/ProductEdit';
 import OrderList from './components/OrderList';
 import OrderEdit from './components/OrderEdit';
+import UserList from './components/UserList';
+import UserEdit from './components/UserEdit';
 
 class App extends Component {
   render() {
@@ -17,6 +19,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path='/' exact={true} component={Home}/>
+
+          <Route path='/users' exact={true} component={UserList}/>
+          <Route path='/users/:id' exact={true} component={UserEdit}/>
 
           <Route path='/customers' exact={true} component={CustomerList}/>
           <Route path='/customers/:id' exact={true} component={CustomerEdit}/>
