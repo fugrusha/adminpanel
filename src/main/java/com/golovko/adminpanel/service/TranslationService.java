@@ -4,6 +4,7 @@ import com.golovko.adminpanel.domain.*;
 import com.golovko.adminpanel.dto.category.CategoryPatchDTO;
 import com.golovko.adminpanel.dto.customer.CustomerPatchDTO;
 import com.golovko.adminpanel.dto.order.OrderPatchDTO;
+import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.dto.product.ProductPatchDTO;
 import com.golovko.adminpanel.dto.product.ProductReadDTO;
 import com.golovko.adminpanel.dto.user.AppUserPatchDTO;
@@ -78,6 +79,9 @@ public class TranslationService {
     }
 
     private void configureForOrder(Configuration c) {
+        Configuration.Translation t = c.beanOfClass(OrderCart.class).translationTo(OrderReadDTO.class);
+        t.srcProperty("customer.id").translatesTo("customerId");
+
         c.beanOfClass(OrderPatchDTO.class).translationTo(OrderCart.class).mapOnlyNotNullProperties();
     }
 

@@ -11,5 +11,7 @@ public class AppUserReadDTO {
 
     private String username;
 
+    private String chatId;
+
     private Boolean isBlocked;
 }

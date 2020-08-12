@@ -7,5 +7,7 @@ public class AppUserPatchDTO {
 
     private String username;
 
+    private String chatId;
+
     private Boolean isBlocked;
 }

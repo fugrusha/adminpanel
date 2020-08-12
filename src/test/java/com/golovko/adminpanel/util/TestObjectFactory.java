@@ -31,6 +31,7 @@ public class TestObjectFactory {
     public AppUser createUser() {
         AppUser user = new AppUser();
         user.setUsername("username");
+        user.setChatId("333333");
         user.setEncodedPassword("23432432");
         user.setIsBlocked(false);
         return appUserRepository.save(user);
@@ -70,6 +71,15 @@ public class TestObjectFactory {
         orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
         orderCart.setTotalSum(20.0);
         orderCart.setStatus(OrderStatus.PROCESSED);
+        orderCart.setCustomer(customer);
+        return orderRepository.save(orderCart);
+    }
+
+    public OrderCart createOrder(Customer customer, OrderStatus status) {
+        OrderCart orderCart = new OrderCart();
+        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
+        orderCart.setTotalSum(20.0);
+        orderCart.setStatus(status);
         orderCart.setCustomer(customer);
         return orderRepository.save(orderCart);
     }

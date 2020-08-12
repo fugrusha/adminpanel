@@ -36,4 +36,33 @@
         </loadUpdateData>
     </changeSet>
 
+    <changeSet id="load orders" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="order_cart" file="db/data/orders.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="status" type="string"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="total_sum" type="numeric"/>
+            <column name="customer_id" type="uuid"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load order_items" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="order_item" file="db/data/order-items.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="product_id" type="uuid"/>
+            <column name="order_cart_id" type="uuid"/>
+            <column name="quantity" type="numeric"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load users" author="andrew" runOnChange="true">
+        <loadUpdateData tableName="app_user" file="db/data/users.csv" separator=";" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="username" type="uuid"/>
+            <column name="chat_id" type="string"/>
+            <column name="is_blocked" type="boolean"/>
+            <column name="encoded_password" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>

@@ -1,8 +1,7 @@
 package com.golovko.adminpanel.service.impl;
 
 import com.golovko.adminpanel.domain.OrderCart;
-import com.golovko.adminpanel.domain.OrderItem;
-import com.golovko.adminpanel.domain.Product;
+import com.golovko.adminpanel.dto.order.OrderFilter;
 import com.golovko.adminpanel.dto.order.OrderPatchDTO;
 import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.dto.order.OrderReadExtendedDTO;
@@ -63,8 +62,15 @@ public class OrderServiceImpl implements OrderService {
 
     //todo add filter
     @Override
-    public List<OrderReadDTO> getAllOrders() {
-        List<OrderCart> orderCarts = orderRepository.getAllOrders();
+    public List<OrderReadDTO> getAllOrders(OrderFilter filter) {
+        List<OrderCart> orderCarts;
+
+        if (filter.getStatus() == null) {
+            orderCarts = orderRepository.getAllOrders();
+        } else {
+            orderCarts = orderRepository.findByStatus(filter.getStatus());
+        }
+
         return translationService.translateList(orderCarts, OrderReadDTO.class);
     }
 

@@ -1,5 +1,6 @@
 package com.golovko.adminpanel.service;
 
+import com.golovko.adminpanel.dto.order.OrderFilter;
 import com.golovko.adminpanel.dto.order.OrderPatchDTO;
 import com.golovko.adminpanel.dto.order.OrderReadDTO;
 import com.golovko.adminpanel.dto.order.OrderReadExtendedDTO;
@@ -17,5 +18,5 @@ public interface OrderService {
 
     void deleteOrder(UUID customerId, UUID id);
 
-    List<OrderReadDTO> getAllOrders();
+    List<OrderReadDTO> getAllOrders(OrderFilter filter);
 }
