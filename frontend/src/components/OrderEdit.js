@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, Table, Container, Form, FormGroup, Label } from 'reactstrap';
+import { Button, Table, Container, Form, FormGroup } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
 class OrderEdit extends Component {
 
   emptyItem = {
+    orderNumber: '',
     totalSum: '',
     status: '',
     createdDate: '',
@@ -74,7 +75,7 @@ class OrderEdit extends Component {
       <AppNavbar/>
       <Container>
         {title}
-        <h4>Order # {item.id}</h4>
+        <h4>Order # {item.orderNumber}</h4>
         <p>Created date: {item.createdDate}</p>
         
         { 
@@ -111,7 +112,7 @@ class OrderEdit extends Component {
 
         <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <Label for="status">Status</Label>
+          <h4>Status</h4> 
           <div>
             <select id="status" name="status" onChange={this.handleChange} value={this.state.item.status}>
               <option value="CANCELED">CANCELED</option>
