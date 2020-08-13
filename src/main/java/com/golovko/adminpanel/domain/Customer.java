@@ -15,7 +15,7 @@ public class Customer extends AbstractEntity {
 
     private String username;
 
-    private String chatId;
+    private Long chatId;
 
     private String name;
 

@@ -8,7 +8,7 @@
         <loadUpdateData tableName="customer" file="db/data/customers.csv" separator=";" primaryKey="id">
             <column name="id" type="uuid"/>
             <column name="username" type="string"/>
-            <column name="chat_id" type="string"/>
+            <column name="chat_id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="surname" type="string"/>
             <column name="phone" type="string"/>
@@ -59,7 +59,7 @@
         <loadUpdateData tableName="app_user" file="db/data/users.csv" separator=";" primaryKey="id">
             <column name="id" type="uuid"/>
             <column name="username" type="uuid"/>
-            <column name="chat_id" type="string"/>
+            <column name="chat_id" type="numeric"/>
             <column name="is_blocked" type="boolean"/>
             <column name="encoded_password" type="string"/>
         </loadUpdateData>

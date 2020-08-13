@@ -11,7 +11,7 @@ public class CustomerReadDTO {
 
     private String username;
 
-    private String chatId;
+    private Long chatId;
 
     private String name;
 

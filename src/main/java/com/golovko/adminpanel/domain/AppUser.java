@@ -15,7 +15,7 @@ public class AppUser extends AbstractEntity {
     private String username;
 
     @Column(unique = true)
-    private String chatId;
+    private Long chatId;
 
     private String encodedPassword;
 

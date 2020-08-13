@@ -10,7 +10,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="username" type="varchar(100)"/>
-            <column name="chat_id" type="varchar(30)"/>
+            <column name="chat_id" type="bigint"/>
             <column name="name" type="varchar(50)"/>
             <column name="surname" type="varchar(50)"/>
             <column name="phone" type="varchar(30)"/>
@@ -25,7 +25,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="username" type="varchar(100)"/>
-            <column name="chat_id" type="varchar(20)"/>
+            <column name="chat_id" type="bigint"/>
             <column name="encoded_password" type="varchar(255)"/>
             <column name="is_blocked" type="boolean"/>
         </createTable>
