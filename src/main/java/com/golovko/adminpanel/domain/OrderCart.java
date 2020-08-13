@@ -20,6 +20,9 @@ public class OrderCart extends AbstractEntity {
     @JoinColumn(nullable = false, updatable = false)
     private Customer customer;
 
+    @Column(unique = true, updatable = false, nullable = false)
+    private String orderNumber;
+
     private Double totalSum;
 
     @Enumerated(EnumType.STRING)

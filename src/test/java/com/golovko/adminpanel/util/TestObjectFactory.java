@@ -69,6 +69,7 @@ public class TestObjectFactory {
     public OrderCart createOrder(Customer customer) {
         OrderCart orderCart = new OrderCart();
         orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351"));
+        orderCart.setOrderNumber("order3454");
         orderCart.setTotalSum(20.0);
         orderCart.setStatus(OrderStatus.PROCESSED);
         orderCart.setCustomer(customer);
@@ -78,6 +79,7 @@ public class TestObjectFactory {
     public OrderCart createOrder(Customer customer, OrderStatus status) {
         OrderCart orderCart = new OrderCart();
         orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351"));
+        orderCart.setOrderNumber("order35");
         orderCart.setTotalSum(20.0);
         orderCart.setStatus(status);
         orderCart.setCustomer(customer);

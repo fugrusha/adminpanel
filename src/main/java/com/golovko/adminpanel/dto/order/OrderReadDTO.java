@@ -11,6 +11,8 @@ public class OrderReadDTO {
 
     private UUID id;
 
+    private String orderNumber;
+
     private UUID customerId;
 
     private Double totalSum;
