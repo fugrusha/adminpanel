@@ -1,6 +1,7 @@
 package com.golovko.adminpanel.dto.order;
 
 import com.golovko.adminpanel.domain.OrderStatus;
+import com.golovko.adminpanel.domain.PaymentType;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,8 @@ public class OrderReadDTO {
     private Double totalSum;
 
     private OrderStatus status;
+
+    private PaymentType paymentType;
 
     private LocalDateTime createdDate;
 }

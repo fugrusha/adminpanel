@@ -41,6 +41,7 @@
             <column name="id" type="uuid"/>
             <column name="order_number" type="string"/>
             <column name="status" type="string"/>
+            <column name="payment_type" type="string"/>
             <column name="created_date" type="timestamp"/>
             <column name="total_sum" type="numeric"/>
             <column name="customer_id" type="uuid"/>

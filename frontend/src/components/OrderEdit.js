@@ -9,6 +9,7 @@ class OrderEdit extends Component {
     orderNumber: '',
     totalSum: '',
     status: '',
+    paymentType: '',
     createdDate: '',
     customer: '',
     items: []
@@ -119,6 +120,16 @@ class OrderEdit extends Component {
               <option value="WAITING">WAITING</option>
               <option value="PROCESSED">PROCESSED</option>
               <option value="COMPLETED">COMPLETED</option>
+            </select>
+          </div>
+          </FormGroup>
+
+          <FormGroup>
+          <h4>Payment Type</h4> 
+          <div>
+            <select id="paymentType" name="paymentType" onChange={this.handleChange} value={this.state.item.paymentType}>
+              <option value="NP_PAYMENT">NOVA POSHTA PAYMENT</option>
+              <option value="PREPAYMENT">PREPAYMENT</option>
             </select>
           </div>
           </FormGroup>

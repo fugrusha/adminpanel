@@ -13,6 +13,7 @@
             <column name="chat_id" type="bigint"/>
             <column name="name" type="varchar(50)"/>
             <column name="surname" type="varchar(50)"/>
+            <column name="payment_type" type="varchar(50)"/>
             <column name="phone" type="varchar(30)"/>
             <column name="city" type="varchar(50)"/>
             <column name="address" type="varchar(200)"/>
@@ -69,6 +70,7 @@
             <column name="order_number" type="varchar(100)"/>
             <column name="status" type="varchar(30)"/>
             <column name="created_date" type="timestamp"/>
+            <column name="payment_type" type="varchar(50)"/>
             <column name="total_sum" type="double"/>
             <column name="customer_id" type="uuid">
                 <constraints

@@ -44,6 +44,7 @@ class OrderList extends Component {
         <td style={{whiteSpace: 'nowrap'}}>{order.orderNumber}</td>
         <td style={{whiteSpace: 'nowrap'}}>{order.createdDate}</td>
         <td>{order.status}</td>
+        <td>{order.paymentType}</td>
         <td>{order.totalSum}</td>
         <td>
           <ButtonGroup>
@@ -65,6 +66,7 @@ class OrderList extends Component {
               <th width="10%">Order Number</th>
               <th width="10%">Date</th>
               <th>Status</th>
+              <th>Payment Type</th>
               <th width="20%">Total Sum</th>
               <th width="10%">Actions</th>
             </tr>
