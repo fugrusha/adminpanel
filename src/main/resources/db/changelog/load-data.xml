@@ -8,7 +8,7 @@
         <loadUpdateData tableName="customer" file="db/data/customers.csv" separator=";" primaryKey="id">
             <column name="id" type="uuid"/>
             <column name="username" type="string"/>
-            <column name="chat_id" type="string"/>
+            <column name="chat_id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="surname" type="string"/>
             <column name="phone" type="string"/>
@@ -39,7 +39,9 @@
     <changeSet id="load orders" author="andrew" runOnChange="true">
         <loadUpdateData tableName="order_cart" file="db/data/orders.csv" separator=";" primaryKey="id">
             <column name="id" type="uuid"/>
+            <column name="order_number" type="string"/>
             <column name="status" type="string"/>
+            <column name="payment_type" type="string"/>
             <column name="created_date" type="timestamp"/>
             <column name="total_sum" type="numeric"/>
             <column name="customer_id" type="uuid"/>
@@ -59,7 +61,7 @@
         <loadUpdateData tableName="app_user" file="db/data/users.csv" separator=";" primaryKey="id">
             <column name="id" type="uuid"/>
             <column name="username" type="uuid"/>
-            <column name="chat_id" type="string"/>
+            <column name="chat_id" type="numeric"/>
             <column name="is_blocked" type="boolean"/>
             <column name="encoded_password" type="string"/>
         </loadUpdateData>

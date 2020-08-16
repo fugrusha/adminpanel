@@ -44,7 +44,6 @@ class ProductList extends Component {
         <td>{product.orderNumber}</td>
         <td style={{whiteSpace: 'nowrap'}}>{product.name}</td>
         <td>{product.description}</td>
-        <td>{product.photoUrl}</td>
         <td>{product.price}</td>
         <td>
           <ButtonGroup>
@@ -67,9 +66,8 @@ class ProductList extends Component {
             <thead>
             <tr>
               <th>#</th>
-              <th width="10%">Name</th>
-              <th>Description</th>
-              <th width="20%">Photo ID</th>
+              <th width="30%">Name</th>
+              <th width="30%">Description</th>
               <th width="10%">Price</th>
               <th width="10%">Actions</th>
             </tr>

@@ -12,7 +12,7 @@ public class AppUserCreateDTO {
     private String username;
 
     @NotNull
-    private String chatId;
+    private Long chatId;
 
     @NotNull
     @Pattern(regexp = "^(?=\\S+$).{8,}$", message = "Password should contain at least 8 characters without spaces")

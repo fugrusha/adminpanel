@@ -81,7 +81,7 @@ public class AppUserControllerTest {
 
         AppUserCreateDTO createDTO = new AppUserCreateDTO();
         createDTO.setUsername("username");
-        createDTO.setChatId("2432432");
+        createDTO.setChatId(2432432L);
         createDTO.setPassword("123qwerty");
         createDTO.setPasswordConfirmation("123qwerty");
 
@@ -107,7 +107,7 @@ public class AppUserControllerTest {
         AppUserPatchDTO patchDTO = new AppUserPatchDTO();
         patchDTO.setIsBlocked(true);
         patchDTO.setUsername("new name");
-        patchDTO.setChatId("233423");
+        patchDTO.setChatId(233423L);
 
         Mockito.when(appUserService.patchUser(readDTO.getId(), patchDTO)).thenReturn(readDTO);
 
@@ -139,7 +139,7 @@ public class AppUserControllerTest {
         dto.setId(UUID.randomUUID());
         dto.setIsBlocked(false);
         dto.setUsername("username");
-        dto.setChatId("43243243");
+        dto.setChatId(43243243L);
         return dto;
     }
 }

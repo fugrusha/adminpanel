@@ -68,8 +68,10 @@ class OrderFilterList extends Component {
 
     const orderList = orders.map(order => {
       return <tr key={order.id}>
+        <td style={{whiteSpace: 'nowrap'}}>{order.orderNumber}</td>
         <td style={{whiteSpace: 'nowrap'}}>{order.createdDate}</td>
         <td>{order.status}</td>
+        <td>{order.paymentType}</td>
         <td>{order.totalSum}</td>
         <td>
           <ButtonGroup>
@@ -106,8 +108,10 @@ class OrderFilterList extends Component {
           <Table className="mt-4">
             <thead>
             <tr>
+              <th width="10%">Order Number</th>
               <th width="10%">Date</th>
               <th>Status</th>
+              <th>Payment Type</th>
               <th width="20%">Total Sum</th>
               <th width="10%">Actions</th>
             </tr>

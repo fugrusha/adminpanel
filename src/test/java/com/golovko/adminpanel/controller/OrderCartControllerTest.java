@@ -122,6 +122,7 @@ public class OrderCartControllerTest {
         OrderReadExtendedDTO dto = new OrderReadExtendedDTO();
         dto.setCreatedDate(LocalDateTime.now());
         dto.setId(UUID.randomUUID());
+        dto.setOrderNumber("order345");
         dto.setTotalSum(1000.0);
         dto.setStatus(OrderStatus.COMPLETED);
         dto.setCustomer(customerDTO);
@@ -132,6 +133,7 @@ public class OrderCartControllerTest {
         OrderReadDTO dto = new OrderReadDTO();
         dto.setCreatedDate(LocalDateTime.now());
         dto.setId(UUID.randomUUID());
+        dto.setOrderNumber("order345");
         dto.setTotalSum(1000.0);
         dto.setStatus(OrderStatus.COMPLETED);
         dto.setCustomerId(customerId);
@@ -146,7 +148,7 @@ public class OrderCartControllerTest {
         dto.setName("name");
         dto.setSurname("last name");
         dto.setUsername("username");
-        dto.setChatId("1234");
+        dto.setChatId(1323223L);
         dto.setPhone("38000788799");
         return dto;
     }

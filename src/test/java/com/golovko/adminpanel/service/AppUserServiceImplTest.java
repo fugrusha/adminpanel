@@ -54,7 +54,7 @@ public class AppUserServiceImplTest extends BaseTest {
     public void testCreateUser() {
         AppUserCreateDTO createDTO = new AppUserCreateDTO();
         createDTO.setUsername("maximus");
-        createDTO.setChatId("444444");
+        createDTO.setChatId(444444L);
         createDTO.setPassword("123435");
         createDTO.setPasswordConfirmation("123435");
 
@@ -73,7 +73,7 @@ public class AppUserServiceImplTest extends BaseTest {
 
         AppUserPatchDTO patchDTO = new AppUserPatchDTO();
         patchDTO.setIsBlocked(true);
-        patchDTO.setChatId("34344");
+        patchDTO.setChatId(34344L);
         patchDTO.setUsername("new username");
 
         AppUserReadDTO actualResult = appUserService.patchUser(u1.getId(), patchDTO);

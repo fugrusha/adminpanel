@@ -14,13 +14,17 @@ import java.util.List;
 @Entity
 public class OrderCart extends AbstractEntity {
 
-    // todo add orderId field
-
     @ManyToOne
     @JoinColumn(nullable = false, updatable = false)
     private Customer customer;
 
+    @Column(unique = true, updatable = false, nullable = false)
+    private String orderNumber;
+
     private Double totalSum;
+
+    @Enumerated(EnumType.STRING)
+    private PaymentType paymentType;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

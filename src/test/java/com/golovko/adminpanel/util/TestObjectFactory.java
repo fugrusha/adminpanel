@@ -31,7 +31,7 @@ public class TestObjectFactory {
     public AppUser createUser() {
         AppUser user = new AppUser();
         user.setUsername("username");
-        user.setChatId("333333");
+        user.setChatId(333333L);
         user.setEncodedPassword("23432432");
         user.setIsBlocked(false);
         return appUserRepository.save(user);
@@ -50,7 +50,7 @@ public class TestObjectFactory {
         customer.setName("name");
         customer.setSurname("last name");
         customer.setUsername("username");
-        customer.setChatId("1234");
+        customer.setChatId(123333L);
         customer.setPhone("38000788799");
         return customerRepository.save(customer);
     }
@@ -68,7 +68,8 @@ public class TestObjectFactory {
 
     public OrderCart createOrder(Customer customer) {
         OrderCart orderCart = new OrderCart();
-        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
+        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351"));
+        orderCart.setOrderNumber("order3454");
         orderCart.setTotalSum(20.0);
         orderCart.setStatus(OrderStatus.PROCESSED);
         orderCart.setCustomer(customer);
@@ -77,7 +78,8 @@ public class TestObjectFactory {
 
     public OrderCart createOrder(Customer customer, OrderStatus status) {
         OrderCart orderCart = new OrderCart();
-        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351038"));
+        orderCart.setCreatedDate(LocalDateTime.parse("2020-08-09T17:03:22.351"));
+        orderCart.setOrderNumber("order35");
         orderCart.setTotalSum(20.0);
         orderCart.setStatus(status);
         orderCart.setCustomer(customer);

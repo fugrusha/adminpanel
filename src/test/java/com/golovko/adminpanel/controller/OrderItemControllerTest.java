@@ -96,7 +96,7 @@ public class OrderItemControllerTest {
         dto.setName("name");
         dto.setSurname("last name");
         dto.setUsername("username");
-        dto.setChatId("1234");
+        dto.setChatId(12333L);
         dto.setPhone("38000788799");
         return dto;
     }
