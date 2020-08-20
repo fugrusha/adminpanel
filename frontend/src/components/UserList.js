@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
+const API_URL = '/api/v1';
+
 class UserList extends Component {
 
   constructor(props) {
@@ -14,13 +16,13 @@ class UserList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch(`/users`)
+    fetch(API_URL + `/users`)
       .then(response => response.json())
       .then(data => this.setState({users: data, isLoading: false}));
   }
 
   async remove(id) {
-    await fetch(`/users/${id}`, {
+    await fetch(API_URL + `/users/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

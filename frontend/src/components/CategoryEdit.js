@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
+const API_URL = '/api/v1';
+
 class CategoryEdit extends Component {
 
   emptyItem = {
@@ -20,7 +22,7 @@ class CategoryEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const category = await (await fetch(`/categories/${this.props.match.params.id}`)).json();
+      const category = await (await fetch(API_URL + `/categories/${this.props.match.params.id}`)).json();
       this.setState({item: category});
     }
   }
@@ -38,7 +40,7 @@ class CategoryEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch(item.id ? '/categories/' + item.id : '/categories', {
+    await fetch(item.id ? API_URL + '/categories/' + item.id : API_URL + '/categories', {
       method: (item.id) ? 'PATCH' : 'POST',
       headers: {
         'Accept': 'application/json',

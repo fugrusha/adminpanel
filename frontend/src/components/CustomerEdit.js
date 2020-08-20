@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
+const API_URL = '/api/v1';
+
 class CustomerEdit extends Component {
 
   emptyItem = {
@@ -24,7 +26,7 @@ class CustomerEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const customer = await (await fetch(`/customers/${this.props.match.params.id}`)).json();
+      const customer = await (await fetch(API_URL + `/customers/${this.props.match.params.id}`)).json();
       this.setState({item: customer});
     }
   }
@@ -42,7 +44,7 @@ class CustomerEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch('/customers/' + item.id, {
+    await fetch(API_URL + '/customers/' + item.id, {
       method: (item.id) ? 'PATCH' : 'POST',
       headers: {
         'Accept': 'application/json',

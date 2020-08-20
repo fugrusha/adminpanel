@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
+const API_URL = '/api/v1';
+
 class OrderList extends Component {
 
   constructor(props) {
@@ -14,13 +16,13 @@ class OrderList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch(`/customers/${this.props.match.params.id}/order-carts`)
+    fetch(API_URL + `/customers/${this.props.match.params.id}/order-carts`)
       .then(response => response.json())
       .then(data => this.setState({orders: data, isLoading: false}));
   }
 
   async remove(customerId, id) {
-    await fetch(`/customers/${customerId}/order-carts/${id}`, {
+    await fetch(API_URL + `/customers/${customerId}/order-carts/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
