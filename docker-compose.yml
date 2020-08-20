@@ -55,6 +55,28 @@ services:
     networks:
       - backend
 
+  #Telegram bot
+  bot:
+    build: ./telegramshop
+    container_name: bot
+    stdin_open: true
+    tty: true
+    #Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=db-postgres
+      - POSTGRES_DB=shop_telegram_bot
+      - DATABASE_USERNAME=admin
+      - POSTGRES_PASSWORD=admin
+      - BOT_USERNAME=@uzbot
+      - WEBHOOK_PATH:https://5206bea3f749.ngrok.io
+      - TOKEN=1243598789:AAH2VGxrRZz8IVylh2wX-bDaooIOvvl9WXo
+    ports:
+      - 80:8080
+    links:
+      - react-app
+    networks:
+      - backend
+
 #Volumes for DB data
 volumes:
   db_data:
