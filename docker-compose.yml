@@ -72,7 +72,7 @@ services:
       - WEBHOOK_PATH:https://ec2-54-229-181-232.eu-west-1.compute.amazonaws.com
       - TOKEN=1243598789:AAH2VGxrRZz8IVylh2wX-bDaooIOvvl9WXo
     ports:
-      - 80:8080
+      - 443:8080
     links:
       - react-app
     networks:
