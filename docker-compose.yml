@@ -1,0 +1,87 @@
+version: '3'
+
+#Define services
+services:
+  #PostgreSQL Database
+  db-postgres:
+    # image: "postgres:9.6-alpine"
+    image: "postgres:12-alpine"
+    container_name: db-postgres
+    restart: always
+    #Volume mounted for database for the storage
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432 # Forward the exposed port 5432 on the container to port 5432 on the host machine
+
+    #Environment variable for DB name, user and password
+    environment:
+      - POSTGRES_DB=shop_telegram_bot
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - backend
+
+  #Back-end Spring Boot Application
+  spring-app:
+    #The docker file in scrum-app build the jar and provides the docker image with the following name.
+    build: .
+    container_name: spring-app
+
+    #Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=db-postgres
+      - POSTGRES_DB=shop_telegram_bot
+      - DATABASE_USERNAME=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - 8081:8081 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    links:
+      - db-postgres
+    networks:
+      - backend
+      - frontend
+
+  #Fronend React Application
+  react-app:
+    build: ./frontend
+    container_name: react-app
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:80
+    links:
+      - spring-app
+    networks:
+      - backend
+
+  #Telegram bot
+  bot:
+    # build: ./telegramshop
+    image: fugrusha/telegrambot:latest
+    container_name: bot
+    stdin_open: true
+    tty: true
+    #Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=db-postgres
+      - POSTGRES_DB=shop_telegram_bot
+      - DATABASE_USERNAME=admin
+      - POSTGRES_PASSWORD=admin
+      - BOT_USERNAME=@uzbot
+      - WEBHOOK_PATH:ec2-54-229-181-232.eu-west-1.compute.amazonaws.com
+      - TOKEN=1243598789:AAH2VGxrRZz8IVylh2wX-bDaooIOvvl9WXo
+    ports:
+      - 80:8080
+    links:
+      - react-app
+    networks:
+      - backend
+
+#Volumes for DB data
+volumes:
+  db_data:
+
+networks:
+  backend:
+  frontend:

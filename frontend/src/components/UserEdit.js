@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
+const API_URL = '/api/v1';
+
 class UserEdit extends Component {
 
   emptyItem = {
@@ -22,7 +24,7 @@ class UserEdit extends Component {
 
   async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
-      const user = await (await fetch(`/users/${this.props.match.params.id}`)).json();
+      const user = await (await fetch(API_URL + `/users/${this.props.match.params.id}`)).json();
       this.setState({item: user});
     }
   }
@@ -46,7 +48,7 @@ class UserEdit extends Component {
     event.preventDefault();
     const {item} = this.state;
 
-    await fetch(item.id ? '/users/' + item.id : '/users', {
+    await fetch(item.id ? API_URL + '/users/' + item.id : API_URL + '/users', {
       method: (item.id) ? 'PATCH' : 'POST',
       headers: {
         'Accept': 'application/json',

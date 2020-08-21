@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
+const API_URL = '/api/v1';
+
 class CategoryList extends Component {
 
   constructor(props) {
@@ -14,13 +16,13 @@ class CategoryList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('/categories')
+    fetch(API_URL + '/categories')
       .then(response => response.json())
       .then(data => this.setState({categories: data, isLoading: false}));
   }
 
   async remove(id) {
-    await fetch(`/categories/${id}`, {
+    await fetch(API_URL + `/categories/${id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

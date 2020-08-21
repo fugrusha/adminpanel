@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
+const API_URL = '/api/v1';
+
 class CustomerList extends Component {
 
   constructor(props) {
@@ -13,7 +15,7 @@ class CustomerList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('/customers')
+    fetch(API_URL + '/customers')
       .then(response => response.json())
       .then(data => this.setState({customers: data, isLoading: false}));
   }

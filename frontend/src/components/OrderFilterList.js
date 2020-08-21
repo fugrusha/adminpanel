@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container, Table, Form, FormGroup, Label} from 're
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
+const API_URL = '/api/v1';
+
 class OrderFilterList extends Component {
 
     emptyFilter = {
@@ -23,7 +25,7 @@ class OrderFilterList extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch(`/order-carts`)
+    fetch(API_URL + `/order-carts`)
       .then(response => response.json())
       .then(data => this.setState({orders: data, isLoading: false}));
   }
@@ -44,11 +46,11 @@ class OrderFilterList extends Component {
     const {filter} = this.state;
 
     if(filter.status === 'ALL') {
-        fetch(`/order-carts`)
+        fetch(API_URL + `/order-carts`)
             .then(response => response.json())
             .then(data => this.setState({orders: data, isLoading: false}));
     } else {
-        await fetch('/order-carts?status=' + filter.status, {
+        await fetch(API_URL + '/order-carts?status=' + filter.status, {
             method: 'GET',
             headers: {
               'Accept': 'application/json',
