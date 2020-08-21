@@ -57,7 +57,8 @@ services:
 
   #Telegram bot
   bot:
-    build: ./telegramshop
+    # build: ./telegramshop
+    image: fugrusha/telegrambot:latest
     container_name: bot
     stdin_open: true
     tty: true
@@ -68,7 +69,7 @@ services:
       - DATABASE_USERNAME=admin
       - POSTGRES_PASSWORD=admin
       - BOT_USERNAME=@uzbot
-      - WEBHOOK_PATH:https://5206bea3f749.ngrok.io
+      - WEBHOOK_PATH:ec2-54-229-181-232.eu-west-1.compute.amazonaws.com
       - TOKEN=1243598789:AAH2VGxrRZz8IVylh2wX-bDaooIOvvl9WXo
     ports:
       - 80:8080
