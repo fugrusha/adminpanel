@@ -49,32 +49,9 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - 3000:80
+      - 80:80
     links:
       - spring-app
-    networks:
-      - backend
-
-  #Telegram bot
-  bot:
-    # build: ./telegramshop
-    image: fugrusha/telegrambot:latest
-    container_name: bot
-    stdin_open: true
-    tty: true
-    #Environment variables for Spring Boot Application.
-    environment:
-      - DB_SERVER=db-postgres
-      - POSTGRES_DB=shop_telegram_bot
-      - DATABASE_USERNAME=admin
-      - POSTGRES_PASSWORD=admin
-      - BOT_USERNAME=@uzbot
-      - WEBHOOK_PATH:https://ec2-54-229-181-232.eu-west-1.compute.amazonaws.com
-      - TOKEN=1243598789:AAH2VGxrRZz8IVylh2wX-bDaooIOvvl9WXo
-    ports:
-      - 80:8080
-    links:
-      - react-app
     networks:
       - backend
 
